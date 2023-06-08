@@ -48,9 +48,9 @@ export const categories = [
     description: 'This is property has a beautiful pool!'
   },
   {
-    label: 'Islands',
+    label: 'Azores, São Miguel',
     icon: GiIsland,
-    description: 'This property is on an island!'
+    description: 'This property located in Ribeira Grande, São Miguel, Azores!'
   },
   {
     label: 'Lake',

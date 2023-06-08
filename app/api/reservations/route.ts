@@ -6,18 +6,19 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 export async function POST(
   request: Request, 
 ) {
-  const currentUser = await getCurrentUser();
 
-  if (!currentUser) {
-    return NextResponse.error();
-  }
+
 
   const body = await request.json();
   const { 
     listingId,
     startDate,
     endDate,
-    totalPrice
+    totalPrice,
+    name,
+    email,
+    phone,
+    guests
    } = body;
 
    if (!listingId || !startDate || !endDate || !totalPrice) {
@@ -31,10 +32,13 @@ export async function POST(
     data: {
       reservations: {
         create: {
-          userId: currentUser.id,
           startDate,
           endDate,
           totalPrice,
+          name,
+          email,
+          phone,
+          guests,
         }
       }
     }

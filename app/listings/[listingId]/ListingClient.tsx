@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { differenceInDays, eachDayOfInterval } from 'date-fns';
 
 import useLoginModal from "@/app/hooks/useLoginModal";
+import useReservationModal from "@/app/hooks/useReservationModal";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 import Container from "@/app/components/Container";
@@ -15,6 +16,8 @@ import { categories } from "@/app/components/navbar/Categories";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import ListingReservation from "@/app/components/listings/ListingReservation";
+import FloatingWhatsAppButton from "@/app/components/FloatingWhatsAppButton";
+import { da } from "date-fns/locale";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -28,6 +31,7 @@ interface ListingClientProps {
     user: SafeUser;
   };
   currentUser?: SafeUser | null;
+  back?: boolean;
 }
 
 const ListingClient: React.FC<ListingClientProps> = ({
@@ -35,7 +39,9 @@ const ListingClient: React.FC<ListingClientProps> = ({
   reservations = [],
   currentUser
 }) => {
+
   const loginModal = useLoginModal();
+
   const router = useRouter();
 
   const disabledDates = useMemo(() => {
@@ -63,28 +69,14 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
   const onCreateReservation = useCallback(() => {
-      if (!currentUser) {
-        return loginModal.onOpen();
-      }
-      setIsLoading(true);
 
-      axios.post('/api/reservations', {
-        totalPrice,
-        startDate: dateRange.startDate,
-        endDate: dateRange.endDate,
-        listingId: listing?.id
-      })
-      .then(() => {
-        toast.success('Listing reserved!');
-        setDateRange(initialDateRange);
-        router.push('/trips');
-      })
-      .catch(() => {
-        toast.error('Something went wrong.');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      })
+
+    loginModal.setTotalPrice(totalPrice);
+    loginModal.setDateRange(dateRange);
+
+    
+      return loginModal.onOpen();
+
   },
   [
     totalPrice, 
@@ -95,8 +87,13 @@ const ListingClient: React.FC<ListingClientProps> = ({
     loginModal
   ]);
 
+
+
   useEffect(() => {
+ 
+    
     if (dateRange.startDate && dateRange.endDate) {
+
       const dayCount = differenceInDays(
         dateRange.endDate, 
         dateRange.startDate
@@ -112,6 +109,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
   return ( 
     <Container>
+      <FloatingWhatsAppButton phoneNumber="+351914699791" />
       <div 
         className="
           max-w-screen-lg 

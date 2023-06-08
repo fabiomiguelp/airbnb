@@ -16,6 +16,7 @@ interface InputProps {
   required?: boolean;
   register: UseFormRegister<FieldValues>,
   errors: FieldErrors
+  defaultValue?: number;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -27,6 +28,7 @@ const Input: React.FC<InputProps> = ({
   register,
   required,
   errors,
+  defaultValue
 }) => {
   return (
     <div className="w-full relative">
@@ -44,6 +46,7 @@ const Input: React.FC<InputProps> = ({
       <input
         id={id}
         disabled={disabled}
+        defaultValue={defaultValue}
         {...register(id, { required })}
         placeholder=" "
         type={type}
