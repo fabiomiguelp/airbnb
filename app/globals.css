@@ -49,3 +49,7 @@ body,
 
 }
 
+.rdrDayDisabled {
+  text-decoration: line-through !important;
+}
+
