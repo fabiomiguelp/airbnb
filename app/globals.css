@@ -49,7 +49,7 @@ body,
 
 }
 
-.rdrDayDisabled {
+.rdrDayDisabled .rdrDayNumber span {
   text-decoration: line-through !important;
 }
 

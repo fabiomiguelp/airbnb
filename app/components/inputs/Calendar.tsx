@@ -21,7 +21,6 @@ const DatePicker: React.FC<DatePickerProps> = ({
   disabledDates
 }) => {
   return (
-    <div style={{textDecoration: 'line-through'}}>
     <DateRange
       rangeColors={['#262626']}
       ranges={[value]}
@@ -32,7 +31,6 @@ const DatePicker: React.FC<DatePickerProps> = ({
       minDate={new Date()}
       disabledDates={disabledDates}
     />
-    </div>
    );
 }
  
