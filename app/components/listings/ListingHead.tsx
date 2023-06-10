@@ -35,7 +35,7 @@ const ListingHead: React.FC<ListingHeadProps> = ({
         title={title}
         subtitle={`${location?.region}, ${location?.label}`}
       />
-      <div className="w-full overflow-hidden"
+      <div className="w-full overflow-hidden no-scrollbar"
       >
         {/* OLD IMAGE */}
         {/*<Image
@@ -44,8 +44,11 @@ const ListingHead: React.FC<ListingHeadProps> = ({
           className="object-cover w-full"
           alt="Image"
   />*/}
-  <div className="carouselContainer">
-            <Carousel swipeScrollTolerance={30} swipeable={true} showThumbs={false} showStatus={false} infiniteLoop={true} autoPlay={true} interval={5000} transitionTime={500} showArrows={false} >
+  <div className="carouselContainer scrollbar-hide">
+            <Carousel swipeScrollTolerance={30} swipeable={true} showThumbs={false} showStatus={false} infiniteLoop={true} autoPlay={true} interval={5000} transitionTime={500} showArrows={true} 
+            showIndicators={true}
+            >
+
       <div className="carouselImage">
         <img src="https://res.cloudinary.com/dll9oq2kl/image/upload/v1686414447/1_dracwo.jpg" alt="" />
       </div>

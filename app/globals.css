@@ -69,3 +69,7 @@ body,
   align-items: center;
 
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
