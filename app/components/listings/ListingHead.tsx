@@ -51,7 +51,8 @@ const ListingHead: React.FC<ListingHeadProps> = ({
           alt="Image"
   />*/}
   <div className="carouselContainer">
-            <Carousel swipeScrollTolerance={30} swipeable={true} showThumbs={false} showStatus={false} infiniteLoop={true} autoPlay={true} interval={5000} transitionTime={500} showArrows={false} showIndicators={false} >
+            <Carousel swipeScrollTolerance={30} swipeable={true} showThumbs={false} showStatus={false} infiniteLoop={true} autoPlay={true} interval={5000} transitionTime={500} showArrows={false} showIndicators={false} 
+            >
       <div className="carouselImage">
         <img src="https://res.cloudinary.com/dll9oq2kl/image/upload/v1686414447/1_dracwo.jpg" alt="" />
       </div>

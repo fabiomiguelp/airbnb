@@ -56,9 +56,9 @@ body,
 .carouselContainer {
 
   max-width: 1200px; /* Adjust the maximum width as per your requirements */
-  overflow: auto;
   overscroll-behavior: auto; /* default */
   margin: 0 auto; /* Center the carousel horizontally */
+  overflow-y: scroll;
 
 }
 
