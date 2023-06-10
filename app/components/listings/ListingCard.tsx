@@ -12,9 +12,11 @@ import {
   SafeUser 
 } from "@/app/types";
 
-import HeartButton from "../HeartButton";
+
 import Button from "../Button";
-import ClientOnly from "../ClientOnly";
+
+
+
 
 interface ListingCardProps {
   data: SafeListing;
@@ -97,15 +99,13 @@ const ListingCard: React.FC<ListingCardProps> = ({
             src={data.imageSrc}
             alt="Listing"
           />
+
+
           <div className="
             absolute
             top-3
             right-3
           ">
-            <HeartButton 
-              listingId={data.id} 
-              currentUser={currentUser}
-            />
           </div>
         </div>
         <div className="font-semibold text-lg">

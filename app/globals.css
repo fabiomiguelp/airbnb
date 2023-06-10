@@ -53,3 +53,17 @@ body,
   text-decoration: line-through !important;
 }
 
+.carouselContainer {
+
+  max-width: 1200px; /* Adjust the maximum width as per your requirements */
+
+  margin: 0 auto; /* Center the carousel horizontally */
+
+}
+
+.carouselImage {
+
+  justify-content: center;
+  align-items: center;
+
+}
