@@ -9,11 +9,11 @@ const Logo = () => {
   return ( 
     <Image
       onClick={() => router.push('/')}
-      className="hidden md:block cursor-pointer" 
       src="https://res.cloudinary.com/dll9oq2kl/image/upload/v1686422356/logo_njoo3t.png" 
-      height="100" 
-      width="100" 
+      height="200"
+      width="200" 
       alt="Logo" 
+      className="cursor-pointer pt-2 pb-2 items-center"
     />
    );
 }

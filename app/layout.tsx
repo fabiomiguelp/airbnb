@@ -36,15 +36,15 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+
+
       <body className={font.className}>
         <>
-
+          <Navbar />
           <ToasterProvider />
           <LoginModal />
-          <RegisterModal />
 
 
-          <Navbar currentUser={currentUser} />
           </>
         <div className="pb-20 pt-28">
           {children}

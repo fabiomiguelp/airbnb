@@ -20,6 +20,8 @@ import Modal from "./Modal";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
 import Button from "../Button";
+import { is } from "date-fns/locale";
+import { log } from "console";
 
 
 
@@ -29,10 +31,34 @@ const LoginModal = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
   const { totalPrice, dateRange, listingId } = useLoginModal();
+  console.log(dateRange)
+
+
+
 
 
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
+
+
+
+
+  const isRangeValid = () => {
+    const { startDate, endDate } = dateRange;
+    if (startDate && endDate) {
+      const differenceInTime = endDate.getTime() - startDate.getTime();
+      const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+
+      return differenceInDays >= 1; // At least two days selected
+    }
+
+    return false;
+  };
+
+
+
+
+
 
   const { 
     register, 
@@ -72,7 +98,7 @@ const LoginModal = () => {
     })
     .then(() => {
       toast.success('Listing reserved!');
-
+      loginModal.setSuccess(true);
       router.push(`/sucess`);
     })
     .catch(() => {
@@ -161,7 +187,8 @@ const LoginModal = () => {
 
 
   return (
-    <Modal
+    isRangeValid() ? (
+      <Modal
       disabled={isLoading}
       isOpen={loginModal.isOpen}
       title="Details"
@@ -171,6 +198,14 @@ const LoginModal = () => {
       body={bodyContent}
 
     />
+    ) : (
+      toast.error('Please select a valid date range.', {
+        duration: 2000,
+      })
+
+
+    )  
+
   );
 }
 
