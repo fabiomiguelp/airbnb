@@ -74,8 +74,29 @@ const ListingClient: React.FC<ListingClientProps> = ({
     loginModal.setTotalPrice(totalPrice);
     loginModal.setDateRange(dateRange);
 
+    // é aqui que o loginModal é aberto e fazer o toast
+
+    const isRangeValid = () => {
+      const { startDate, endDate } = dateRange;
+      if (startDate && endDate) {
+        const differenceInTime = endDate.getTime() - startDate.getTime();
+        const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+  
+        return differenceInDays >= 1; // At least two days selected
+      }
+  
+      return false;
+    };
+  
     
+    if (isRangeValid()) {
       return loginModal.onOpen();
+    }else{
+      toast.error('Please select a valid date range', {
+        duration: 3000,
+      });
+    }
+
 
   },
   [

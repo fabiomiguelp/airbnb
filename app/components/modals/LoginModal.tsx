@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { toast } from 'react-hot-toast';
 import { signIn } from 'next-auth/react';
 import { 
   FieldValues, 
@@ -19,9 +19,6 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import Modal from "./Modal";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
-import Button from "../Button";
-import { is } from "date-fns/locale";
-import { log } from "console";
 
 
 
@@ -35,25 +32,11 @@ const LoginModal = () => {
 
 
 
-
-
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
 
 
-
-  const isRangeValid = () => {
-    const { startDate, endDate } = dateRange;
-    if (startDate && endDate) {
-      const differenceInTime = endDate.getTime() - startDate.getTime();
-      const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-
-      return differenceInDays >= 1; // At least two days selected
-    }
-
-    return false;
-  };
 
 
 
@@ -109,6 +92,9 @@ const LoginModal = () => {
       loginModal.onClose();
 
     })
+
+
+
 
 /*
     signIn('credentials', { 
@@ -187,7 +173,7 @@ const LoginModal = () => {
 
 
   return (
-    isRangeValid() ? (
+
       <Modal
       disabled={isLoading}
       isOpen={loginModal.isOpen}
@@ -198,13 +184,7 @@ const LoginModal = () => {
       body={bodyContent}
 
     />
-    ) : (
-      toast.error('Please select a valid date range.', {
-        duration: 2000,
-      })
 
-
-    )  
 
   );
 }
