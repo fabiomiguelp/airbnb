@@ -19,6 +19,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import Modal from "./Modal";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
+import Loader from "../Loader";
 
 
 
@@ -80,16 +81,26 @@ const LoginModal = () => {
       guests: parseInt(guests),
     })
     .then(() => {
+      
       toast.success('Listing reserved!');
+      
       loginModal.setSuccess(true);
       router.push(`/sucess`);
+
+
+
+
+
+
     })
     .catch(() => {
       toast.error('Something went wrong.');
     })
     .finally(() => {
+      
       setIsLoading(false);
       loginModal.onClose();
+      
 
     })
 
@@ -122,6 +133,7 @@ const LoginModal = () => {
   }, [loginModal, registerModal])
 
   const bodyContent = (
+    !isLoading ? (
     <div className="flex flex-col gap-4">
       <Heading
         title="Enter your details"
@@ -168,6 +180,11 @@ const LoginModal = () => {
 
       
     </div>
+    ) : (
+      <Loader />
+    )
+
+
   )
 
 
