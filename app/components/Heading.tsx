@@ -45,10 +45,10 @@ const Heading: React.FC<HeadingProps> = ({
       <div className="font-light text-neutral-500 mt-2">
         {email}
       </div>
-      <br/>
-      {whattsapp && <div><WhatsAppButton phoneNumber={whattsapp} /></div>}
-      <br/>
-      {back && <div>
+      
+      {whattsapp && <div><br/><WhatsAppButton phoneNumber={whattsapp} /></div>}
+      
+      {back && <div><br/>
         <Button
             outline
             label="Go back"
