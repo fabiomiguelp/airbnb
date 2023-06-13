@@ -54,7 +54,9 @@ body,
 }
 
 .carouselContainer {
-  border-radius: 0.75rem;
+  -webkit-border-radius: 12px; /* Safari/Chrome */
+  -moz-border-radius: 12px; /* Firefox */
+  border-radius: 12px; /* Standard */
 
   max-width: 1200px; /* Adjust the maximum width as per your requirements */
   overscroll-behavior: auto; /* default */
